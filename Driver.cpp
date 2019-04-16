@@ -10,7 +10,7 @@
 using namespace std;
 
 ///////////////////////Menu/////////////////////////
-void menu1(){
+void menu(){
   cout << "=======Main Menu=======" << endl;
   cout << "1. Create a New Profile" << endl;
   cout << "2. Add a Task to an Existing Profile" << endl;
