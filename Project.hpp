@@ -28,7 +28,7 @@ public:
   ~ToDoList();
   void addTask();
   void completeTask();
-  Profile peek();
+  Task peek();
   bool isEmpty();
   void printList();
   void search(string taskname);
@@ -36,7 +36,7 @@ public:
 private:
   void repairUpward(int nodeIndex);
 
-  Profile* TaskPriority;
+  Task* TaskPriority;
   int currentQueueSize;
   int maxQueueSize = 100;
 };
