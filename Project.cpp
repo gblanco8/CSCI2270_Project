@@ -29,7 +29,11 @@ Profile ToDoList::peek(){
   }
 }
 bool ToDoList::isEmpty(){
-
+  if(currentQueueSize == 0){
+    return true;
+  }else{
+    return false;
+  }
 }
 void ToDoList::printList(){
 
