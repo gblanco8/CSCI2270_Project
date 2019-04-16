@@ -5,7 +5,7 @@
 using namespace std;
 
 ToDoList::ToDoList(){
-  ToDoList = new Categories[maxQueueSize];
+  TaskPriority = new Profile[maxQueueSize];
   currentQueueSize = 0;
 }
 ToDoList::~ToDoList(){
