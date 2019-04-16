@@ -9,8 +9,11 @@ ToDoList::ToDoList(){
   
 }
 ToDoList::~ToDoList(){
-
+  delete [] TaskPriority;
 }
+void ToDoList::addProfile(){
+  
+}  
 void ToDoList::addTask(){
 
 }
