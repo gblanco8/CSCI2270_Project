@@ -21,7 +21,12 @@ void ToDoList::completeTask(){
 
 }
 Profile ToDoList::peek(){
-
+  if(isEmpty()){
+    cout << "To do list empty, nothing to see" << endl;
+    return NULL;
+  }else{
+    return TaskPriority[0];
+  }
 }
 bool ToDoList::isEmpty(){
 
