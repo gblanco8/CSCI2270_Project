@@ -12,13 +12,13 @@ struct Profile{
 struct Categories{
   string categoryname;
   int categoryweight;
+  vector<Task> tasks;
 };
 
 struct Task{
   string taskname;
   float length;
-  float time;
-  double classweight;
+  int time;
   float priority;
 };
 
