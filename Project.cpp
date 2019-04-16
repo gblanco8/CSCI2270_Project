@@ -6,7 +6,7 @@ using namespace std;
 
 ToDoList::ToDoList(){
   ToDoList = new Categories[maxQueueSize];
-  
+  currentQueueSize = 0;
 }
 ToDoList::~ToDoList(){
   delete [] TaskPriority;
