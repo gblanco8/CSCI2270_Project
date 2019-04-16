@@ -5,7 +5,6 @@ using namespace std;
 
 struct Profile{
   string username;
-  int age;
   vector<Categories> cat;
 };
 
