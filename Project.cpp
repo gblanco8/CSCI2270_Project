@@ -43,7 +43,9 @@ bool ToDoList::isEmpty(){
   }
 }
 void ToDoList::printList(){
-
+  for(int i=0; i<currentQueueSize; i++){
+    cout << TaskPriority[i]->taskName
+  }
 }
 void ToDoList::search(){
 
