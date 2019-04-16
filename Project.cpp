@@ -18,7 +18,14 @@ void ToDoList::addTask(){
 
 }
 void ToDoList::completeTask(){
-
+  if(!isEmpty()){
+    TaskPriority[0] = TaskPriority[currentQueueSize-1];
+    currentQueueSize--;
+    repairUpward(currentQueueSize);
+  }
+  else{
+    cout << "List empty, cannot dequeue" << endl;
+  }
 }
 Profile ToDoList::peek(){
   if(isEmpty()){
