@@ -3,12 +3,15 @@
 #include <vector>
 using namespace std;
 
+struct Category;
+struct Task;
+
 struct Profile{
   string username;
-  vector<Categories> cat;
+  vector<Category> cat;
 };
 
-struct Categories{
+struct Category{
   string categoryname;
   int categoryweight;
   vector<Task> tasks;
@@ -25,12 +28,14 @@ class ToDoList{
 public:
   ToDoList();
   ~ToDoList();
-  void addTask();
-  void completeTask();
-  void addProfile(string username)
+  void addTask(string taskName, float length, int time);
+  void completeTopTask();
+  void completeAnyTask(string taskname);
+  void addProfile(string username);
   Task peek();
   bool isEmpty();
   void printList();
+  void printProfiles();
   int search(string TaskName);
   double calculatePriority(float length, int time); // (1/time til deadline) * (duration) * (importance)
 private:
