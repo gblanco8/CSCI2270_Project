@@ -40,8 +40,6 @@ int main(int argc, char const* argv[]){
       cin.ignore();
       cout << "Please enter a username: " << endl;
       getline(cin, username);
-      cout << "Please enter your age: " << endl;
-      getline(cin, age);
       TQ.addProfile(username);
     }else if(userInput == 2){
       cin.ignore();
