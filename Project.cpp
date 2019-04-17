@@ -67,8 +67,21 @@ void ToDoList::completeTask(){
     repairUpward(currentQueueSize);
   }
   else{
-    cout << "List empty, cannot dequeue" << endl;
+    cout << "List empty, cannot complete task" << endl;
   }
+}
+/////
+void ToDoList::completeAnyTask(string taskName) //depends on what search() returns (boolean or task*)
+{
+  int index = search(taskName);
+  if(!isEmpty())
+  {
+    TaskPriority[index] = TaskPriority[currentQueueSize - 1];
+    currentQueueSize--;
+    repairUpward(currentQueueSize);
+  }
+  else{
+    cout<<"List empty, cannot complete task"<<endl;
 }
 /////
 Profile ToDoList::peek(){
