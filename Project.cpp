@@ -47,8 +47,12 @@ void ToDoList::printList(){
     cout << TaskPriority[i]->taskName
   }
 }
-void ToDoList::search(){
-
+int ToDoList::search(string TaskName){                               
+  for(int i = 0; i < currentQueueSize; i++){
+    if(TaskPriority[i].taskname == TaskName){
+      return i;
+    }
+  }
 }
 void ToDoList::calculatePriority(){
 
