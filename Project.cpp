@@ -116,7 +116,14 @@ int ToDoList::search(string TaskName){
 }
 /////
 double ToDoList::calculatePriority(float length, int time){
-
+  double priority;
+  if(length > time){
+    cout << "Sorry, you do not have enough time to complete this task" << endl;
+    return -1;
+  }else{
+    priority = (length/time);
+    return priority;
+  }
 }
 /////
 void swap(Task* a, Task* b){
