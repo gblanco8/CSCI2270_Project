@@ -31,7 +31,7 @@ public:
   Task peek();
   bool isEmpty();
   void printList();
-  void search(string taskname);
+  int search(string TaskName);
   void calculatePriority(); // (1/time til deadline) * (duration) * (importance)
 private:
   void repairUpward(int nodeIndex);
