@@ -4,8 +4,9 @@
 //Driver file
 
 #include <iostream>
+#include <sstream>
 #include <string>
-#include "Project.hpp"
+#include "Project.cpp"
 
 using namespace std;
 
@@ -22,48 +23,49 @@ void menu(){
 
 /////////////////////Main//////////////////////////
 int main(int argc, char const* argv[]){
-  TaskQueue TQ;
+  ToDoList TQ;
 
 //Input Variables
   int userInput;
   string username;
   string taskName;
   float length;
-  float time;
+  int time;
   string deleteTaskName;
 
   while(userInput != 6){
+    cout << endl;
     menu();
+    cout << "Select an option: ";
     cin >> userInput;
     if(userInput == 1){
-      cin.ignore();
+      //cin.ignore();
       cout << "Please enter a username: " << endl;
-      getline(cin, username);
+      cin >> username;
       TQ.addProfile(username);
     }else if(userInput == 2){
-      cin.ignore();
       cout << "Please enter name of task: " << endl;
-      getline(cin, taskName);
+      cin >> taskName;
       cout << "Please enter number of hours to complete task: " << endl;
-      getline(cin, length);
+      cin >> length;
       cout << "Please enter number of days until task is due: " << endl;
-      getline(cin, time);
+      cin >> time;
       TQ.addTask(taskName, length, time);
     }else if(userInput == 3){
       TQ.printList();
     }else if(userInput == 4){
-      TQ.printProfiles();
+      return 0;
+      //TQ.printProfiles();
     }else if(userInput == 5){
-      cin.ignore();
       cout << "Please enter name of task you wish to delete: " << endl;
       getline(cin, deleteTaskName);
-      if(TQ.peek()->taskName == deleteTaskName){
-        TQ.completeTask();
+      if(TQ.peek().taskname == deleteTaskName){
+        TQ.completeTopTask();
       }else{
-        TQ.completeAnyTask();
+        TQ.completeAnyTask(deleteTaskName);
       }
     }
   }
-  cout << "Goodbye!" << endl;
+  cout << "Procrastination is the Death of Freedom!" << endl;
   return 0;
 }
