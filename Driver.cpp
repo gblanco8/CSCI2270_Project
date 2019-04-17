@@ -27,7 +27,6 @@ int main(int argc, char const* argv[]){
 //Input Variables
   int userInput;
   string username;
-  int age;
   string taskName;
   float length;
   float time;
