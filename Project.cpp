@@ -13,8 +13,34 @@ ToDoList::~ToDoList(){
   delete [] TaskPriority;
 }
 /////
-void ToDoList::addProfile(){
-  
+void ToDoList::addProfile(string username) //creates a new profile for the user
+{
+  Profile userProfile = new Profile;
+  userProfile->username = username;
+
+  string catName;
+  int importance;
+  bool catDone = false;
+
+  while(!catDone) //how the user will stop the process of entering new categories
+  {
+    //Should clarify what we mean by category, so that it's more user-friendly
+    cout<<"--Enter a new category name, or enter DONE if done entering categories--"<<endl;
+    cin>>catName;
+    if (catName == "DONE"){
+      catDone = true;
+    }
+    else{
+      Category newCat = new Category;
+      newCat->categoryname = catName;
+      cout<<"--Assign an 'importance' to this category--"<<endl;
+      cout<<"--This should be a number between 1 and 10, with 10 being of highest importance--"<<endl;
+      cin>>importance;
+      newCat->categoryweight = importance;
+      (userProfile->cat).push_back(cat);
+      catDone = false;
+    }
+  }
 }
 /////
 void ToDoList::addTask(){
