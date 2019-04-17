@@ -25,7 +25,7 @@ int main(int argc, char const* argv[]){
 
 //Input Variables
   int userInput;
-  string userName;
+  string username;
   int age;
   string taskName;
   float length;
@@ -38,10 +38,10 @@ int main(int argc, char const* argv[]){
     if(userInput == 1){
       cin.ignore();
       cout << "Please enter a username: " << endl;
-      getline(cin, userName);
+      getline(cin, username);
       cout << "Please enter your age: " << endl;
       getline(cin, age);
-      TQ.createProfile(userName, age);
+      TQ.createProfile(username, age);
     }else if(userInput == 2){
       cin.ignore();
       cout << "Please enter name of task: " << endl;
