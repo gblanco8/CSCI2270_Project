@@ -53,6 +53,17 @@ void ToDoList::search(){
 void ToDoList::calculatePriority(){
 
 }
+void swap(Task* a, Task* b){
+  Task temp = a;
+  a = b;
+  b = temp;
+}
 void ToDoList::repairUpward(int nodeIndex){
+  int p = (nodeIndex-1)/2;
 
+  if(TaskPriority[nodeIndex].priority > TaskPriority[p].priority) return;
+  else if(TaskPriority[nodeIndex].priority < TaskPriority[p].priority){
+    swap(&TaskPriority[nodeIndex],&TaskPriority[p]);
+    repairUpward(p);
+  }
 }
