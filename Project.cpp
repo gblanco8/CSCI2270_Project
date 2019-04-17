@@ -15,7 +15,20 @@ void ToDoList::addProfile(){
   
 }  
 void ToDoList::addTask(){
-
+  Task nT;
+  float priority = 0;
+  TaskPriority[currentQueueSize+1] = nT;
+//Add fields the the new task
+  nT->taskName = taskName;
+  nT->length = length;
+  nT->time = time;
+//Calc priority and add it to the new task
+  priority = calculatePriority(length, time);
+  nT->priority = priority;
+//Update queue
+  TaskPriority[currentQueueSize] = *nT;
+  repairUpward(currentQueueSize);
+  currentQueueSize++;
 }
 void ToDoList::completeTask(){
   if(!isEmpty()){
