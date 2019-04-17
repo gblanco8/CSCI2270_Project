@@ -15,8 +15,9 @@ void menu(){
   cout << "1. Create a New Profile" << endl;
   cout << "2. Add a Task to an Existing Profile" << endl;
   cout << "3. Display Tasks in Order of Priority" << endl;
-  cout << "4. Complete a Task" << endl;
-  cout << "5. Quit" << endl;
+  cout << "4. Display Profiles" << endl;
+  cout << "5. Complete a Task" << endl;
+  cout << "6. Quit" << endl;
 }
 
 /////////////////////Main//////////////////////////
@@ -32,7 +33,7 @@ int main(int argc, char const* argv[]){
   float time;
   string deleteTaskName;
 
-  while(userInput != 5){
+  while(userInput != 6){
     menu();
     cin >> userInput;
     if(userInput == 1){
@@ -54,11 +55,15 @@ int main(int argc, char const* argv[]){
     }else if(userInput == 3){
       TQ.printList();
     }else if(userInput == 4){
+      TQ.printProfiles();
+    }else if(userInput == 5){
       cin.ignore();
       cout << "Please enter name of task you wish to delete: " << endl;
       getline(cin, deleteTaskName);
       if(TQ.peek()->taskName == deleteTaskName){
-        TQ.deleteTask();
+        TQ.completeTask();
+      }else{
+        TQ.completeAnyTask();
       }
     }
   }
