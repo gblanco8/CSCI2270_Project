@@ -52,7 +52,7 @@ int main(int argc, char const* argv[]){
       getline(cin, time);
       TQ.addTask(taskName, length, time);
     }else if(userInput == 3){
-      TQ.displayInventory();
+      TQ.printList();
     }else if(userInput == 4){
       cin.ignore();
       cout << "Please enter name of task you wish to delete: " << endl;
