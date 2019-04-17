@@ -115,7 +115,7 @@ int ToDoList::search(string TaskName){
   }
 }
 /////
-double ToDoList::calculatePriority(){
+double ToDoList::calculatePriority(float length, int time){
 
 }
 /////
