@@ -27,6 +27,7 @@ public:
   ~ToDoList();
   void addTask();
   void completeTask();
+  void addProfile(string username)
   Task peek();
   bool isEmpty();
   void printList();
