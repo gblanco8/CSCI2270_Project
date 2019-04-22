@@ -6,6 +6,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <fstream>
 #include "Project.cpp"
 
 using namespace std;
@@ -24,7 +25,30 @@ void menu(){
 /////////////////////Main//////////////////////////
 int main(int argc, char const* argv[]){
   ToDoList TQ;
-
+  
+  ifstream indatabase("Database.txt");
+  string line;
+  string data[5];
+  if(indatabase.is_open()){
+    while(getline(indatabase,line)){
+      stringstream ss << line;
+      while(getline(ss,data[i],",")){
+       i++; 
+      }
+      TQ.addProfile(data[0]);
+      TQ.addTask(data[1],stof(data[2]),stoi(data[3]));
+    }
+  }
+  indatabase.close();
+  
+  
+  ofstream outdatabase("Database.txt");
+  if(outdatabase.is_open()){
+    
+  }
+  outdatabase.close(); 
+  
+  
 //Input Variables
   int userInput;
   string username;
