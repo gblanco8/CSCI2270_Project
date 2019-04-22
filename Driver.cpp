@@ -41,14 +41,6 @@ int main(int argc, char const* argv[]){
   }
   indatabase.close();
   
-  
-  ofstream outdatabase("Database.txt");
-  if(outdatabase.is_open()){
-    
-  }
-  outdatabase.close(); 
-  
-  
 //Input Variables
   int userInput;
   string username;
@@ -57,6 +49,9 @@ int main(int argc, char const* argv[]){
   int time;
   string deleteTaskName;
 
+  ofstream outdatabase("Database.txt");
+  if(outdatabase.is_open()){
+    
   while(userInput != 6){
     cout << endl;
     menu();
@@ -90,6 +85,9 @@ int main(int argc, char const* argv[]){
       }
     }
   }
+  }
+  outdatabase.close();
+  
   cout << "Procrastination is the Death of Freedom!" << endl;
   return 0;
 }
