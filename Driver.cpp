@@ -4,8 +4,9 @@
 //Driver file
 
 #include <iostream>
+#include <sstream>
 #include <string>
-#includ "taskQueue.hpp"
+#include "Project.cpp"
 
 using namespace std;
 
@@ -15,53 +16,56 @@ void menu(){
   cout << "1. Create a New Profile" << endl;
   cout << "2. Add a Task to an Existing Profile" << endl;
   cout << "3. Display Tasks in Order of Priority" << endl;
-  cout << "4. Complete a Task" << endl;
-  cout << "5. Quit" << endl;
+  cout << "4. Display Profiles" << endl;
+  cout << "5. Complete a Task" << endl;
+  cout << "6. Quit" << endl;
 }
 
 /////////////////////Main//////////////////////////
 int main(int argc, char const* argv[]){
-  TaskQueue TQ;
+  ToDoList TQ;
 
 //Input Variables
   int userInput;
-  string userName;
-  int age;
+  string username;
   string taskName;
   float length;
-  float time;
+  int time;
   string deleteTaskName;
 
-  while(userInput != 5){
+  while(userInput != 6){
+    cout << endl;
     menu();
+    cout << "Select an option: ";
     cin >> userInput;
     if(userInput == 1){
-      cin.ignore();
+      //cin.ignore();
       cout << "Please enter a username: " << endl;
-      getline(cin, userName);
-      cout << "Please enter your age: " << endl;
-      getline(cin, age);
-      TQ.createProfile(userName, age);
+      cin >> username;
+      TQ.addProfile(username);
     }else if(userInput == 2){
-      cin.ignore();
       cout << "Please enter name of task: " << endl;
-      getline(cin, taskName);
+      cin >> taskName;
       cout << "Please enter number of hours to complete task: " << endl;
-      getline(cin, length);
+      cin >> length;
       cout << "Please enter number of days until task is due: " << endl;
-      getline(cin, time);
+      cin >> time;
       TQ.addTask(taskName, length, time);
     }else if(userInput == 3){
-      TQ.displayInventory();
+      TQ.printList();
     }else if(userInput == 4){
-      cin.ignore();
+      cout << "These are the current stored profiles:" << endl;
+      TQ.printProfiles();
+    }else if(userInput == 5){
       cout << "Please enter name of task you wish to delete: " << endl;
       getline(cin, deleteTaskName);
-      if(TQ.peek()->taskName == deleteTaskName){
-        TQ.deleteTask();
+      if(TQ.peek().taskname == deleteTaskName){
+        TQ.completeTopTask();
+      }else{
+        TQ.completeAnyTask(deleteTaskName);
       }
     }
   }
-  cout << "Goodbye!" << endl;
+  cout << "Procrastination is the Death of Freedom!" << endl;
   return 0;
 }
