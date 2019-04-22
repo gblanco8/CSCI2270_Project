@@ -85,8 +85,8 @@ int main(int argc, char const* argv[]){
       }
     }
   }
+    outdatabase.close();
   }
-  outdatabase.close();
   
   cout << "Procrastination is the Death of Freedom!" << endl;
   return 0;
