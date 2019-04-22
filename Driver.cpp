@@ -15,11 +15,12 @@ using namespace std;
 void menu(){
   cout << "=======Main Menu=======" << endl;
   cout << "1. Create a New Profile" << endl;
-  cout << "2. Add a Task to an Existing Profile" << endl;
-  cout << "3. Display Tasks in Order of Priority" << endl;
-  cout << "4. Display Profiles" << endl;
-  cout << "5. Complete a Task" << endl;
-  cout << "6. Quit" << endl;
+  cout << "2. Choose Existing Profile" << endl;
+  cout << "3. Add a Task to an Existing Profile" << endl;
+  cout << "4. Display Tasks in Order of Priority" << endl;
+  cout << "5. Display Profiles" << endl;
+  cout << "6. Complete a Task" << endl;
+  cout << "7. Quit" << endl;
 }
 
 /////////////////////Main//////////////////////////
@@ -52,7 +53,7 @@ int main(int argc, char const* argv[]){
   ofstream outdatabase("Database.txt");
   if(outdatabase.is_open()){
     
-  while(userInput != 6){
+  while(userInput != 7){
     cout << endl;
     menu();
     cout << "Select an option: ";
@@ -63,6 +64,8 @@ int main(int argc, char const* argv[]){
       cin >> username;
       TQ.addProfile(username);
     }else if(userInput == 2){
+      QT.printProfiles();
+    }else if(userInput == 3){
       cout << "Please enter name of task: " << endl;
       cin >> taskName;
       cout << "Please enter number of hours to complete task: " << endl;
@@ -70,12 +73,12 @@ int main(int argc, char const* argv[]){
       cout << "Please enter number of days until task is due: " << endl;
       cin >> time;
       TQ.addTask(taskName, length, time);
-    }else if(userInput == 3){
-      TQ.printList();
     }else if(userInput == 4){
+      TQ.printList();
+    }else if(userInput == 5){
       return 0;
       //TQ.printProfiles();
-    }else if(userInput == 5){
+    }else if(userInput == 6){
       cout << "Please enter name of task you wish to delete: " << endl;
       getline(cin, deleteTaskName);
       if(TQ.peek().taskname == deleteTaskName){
