@@ -2,7 +2,6 @@
 #include <windows.h>
 #include <iostream>
 
-#include "Project.hpp"
 #include "Project.cpp"
 
 #define FILE_MENU_HELLO 1
@@ -14,6 +13,7 @@
 #define COMPLETE_TASK 7
 #define DISPLAY_PROFILES 8
 
+ToDoList QT;
 
 const char g_szClassName[] = "myWindowClass";
 
@@ -86,7 +86,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
               case ADD_PROFILE:
                 char profile[30];
                 GetWindowText(hProfile, profile, 30);
-                addProfile(profile);
+                QT.addProfile(profile);
                 break;
               case ADD_TASK:
                 char name[30], length[10], time[10], weight[10], category[50];
@@ -95,18 +95,18 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
                 GetWindowText(hTime, time, 10);
                 GetWindowText(hCat, category, 50);
                 GetWindowText(hCatWeight, weight, 10);
-                addTask(name, length, (int)time, category, weight);
+                QT.addTask((string)name, atof(length), (int)time, (int)weight);
                 break;
               case DISPLAY_TASKS:
-                printList();
+                QT.printList();
                 break;
               case COMPLETE_TASK:
                 char task[50];
                 GetWindowText(hTask, task, 50);
-                completeAnyTask(task);
+                QT.completeAnyTask(task);
                 break;
               case DISPLAY_PROFILES:
-                printProfiles();
+                QT.printProfiles();
                 break;
             }
 
