@@ -44,4 +44,6 @@ private:
   Task* TaskPriority;
   int currentQueueSize;
   int maxQueueSize = 100;
+  vector<Profile> profs;
+  int numProfs;
 };
