@@ -14,8 +14,7 @@ ToDoList::~ToDoList(){
   delete [] TaskPriority;
 }
 /////
-void ToDoList::addProfile(string username) //creates a new profile for the user
-{
+void ToDoList::addProfile(string username){ //creates a new profile for the user
   Profile* userProfile = new Profile;
   userProfile->username = username;
   profs.push_back(*userProfile);
@@ -74,8 +73,7 @@ void ToDoList::completeTopTask(){
   }
 }
 /////
-void ToDoList::completeAnyTask(string taskName) //depends on what search() returns (boolean or task*)
-{
+void ToDoList::completeAnyTask(string taskName){ //depends on what search() returns (boolean or task*)
   int index = search(taskName);
   if(!isEmpty())
   {
@@ -123,13 +121,13 @@ int ToDoList::search(string TaskName){
   }
 }
 /////
-double ToDoList::calculatePriority(float length, int time){
+double ToDoList::calculatePriority(float length, int time, int catweight){
   double priority;
   if(length > 24*time){
     cout << "Sorry, you do not have enough time to complete this task" << endl;
     return -1;
   }else{
-    priority = (length/time);
+    priority = (length/time)*catweight;
     return priority;
   }
 }
@@ -150,8 +148,7 @@ void ToDoList::repairUpward(int nodeIndex){
   }
 }
 
-void ToDoList::printProfiles()
-{
+void ToDoList::printProfiles(){
   ofstream outprof("Profiles.txt");
   if(outprof.is_open()){
     for(int i = 0; i < numProfs; i++){
