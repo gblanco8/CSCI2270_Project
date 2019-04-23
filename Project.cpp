@@ -20,6 +20,7 @@ void ToDoList::addProfile(string username){ //creates a new profile for the user
   profs.push_back(*userProfile);
   numProfs++;
 
+/*
   string catName;
   int importance;
   bool catDone = false;
@@ -43,6 +44,7 @@ void ToDoList::addProfile(string username){ //creates a new profile for the user
       catDone = false;
     }
   }
+*/
 }
 /////
 void ToDoList::addTask(string taskName, float length, int time){
