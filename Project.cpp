@@ -47,7 +47,7 @@ void ToDoList::addProfile(string username){ //creates a new profile for the user
 */
 }
 /////
-void ToDoList::addTask(string taskName, float length, int time){
+void ToDoList::addTask(string taskName, float length, int time, int catWeight){
   Task nT;
   float priority = 0;
   TaskPriority[currentQueueSize+1] = nT;
@@ -56,7 +56,7 @@ void ToDoList::addTask(string taskName, float length, int time){
   nT.length = length;
   nT.time = time;
 //Calc priority and add it to the new task
-  priority = calculatePriority(length, time);
+  priority = calculatePriority(length, time, catWeight);
   nT.priority = priority;
 //Update queue
   TaskPriority[currentQueueSize] = nT;
