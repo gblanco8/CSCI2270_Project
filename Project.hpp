@@ -28,7 +28,7 @@ class ToDoList{
 public:
   ToDoList();
   ~ToDoList();
-  void addTask(string taskName, float length, int time);
+  void addTask(string taskName, float length, int time, int catWeight);
   void completeTopTask();
   void completeAnyTask(string taskname);
   void addProfile(string username);
