@@ -28,16 +28,16 @@ int main(int argc, char const* argv[]){
   ToDoList TQ;
 
   ifstream indatabase("Database.txt");
-  string line;
-  string data[5];
   if(indatabase.is_open()){
+    string line;
     while(getline(indatabase,line)){
-      stringstream ss << line;
-      while(getline(ss,data[i],",")){
-       i++;
+      stringstream ss(line);
+      string data[5];
+      int index = 0;
+      while(getline(ss,data[index])){
+       index++;
       }
-      TQ.addProfile(data[0]);
-      TQ.addTask(data[1],stof(data[2]),stoi(data[3]));
+      TQ.addTask(data[2],stof(data[3]),stoi(data[4]));
     }
   }
   indatabase.close();
@@ -46,53 +46,58 @@ int main(int argc, char const* argv[]){
   int userInput;
   string username;
   string taskName;
+  string catname;
   float length;
   int time;
   string deleteTaskName;
+  string output;
 
   ofstream outdatabase("Database.txt");
   if(outdatabase.is_open()){
-
-  while(userInput != 7){
-    cout << endl;
-    menu();
-    cout << "Select an option: ";
-    cin >> userInput;
-    if(userInput == 1){
-      //cin.ignore();
-      cout << "Please enter a username: " << endl;
-      cin >> username;
-      TQ.addProfile(username);
-    }else if(userInput == 2){
-      QT.printProfiles();
-      cout << "Choose a profile" << endl;
-      cin << username;
-    }else if(userInput == 3){
-      cout << "Please enter name of task: " << endl;
-      cin >> taskName;
-      cout << "Please enter number of hours to complete task: " << endl;
-      cin >> length;
-      cout << "Please enter number of days until task is due: " << endl;
-      cin >> time;
-      TQ.addTask(taskName, length, time);
-      outdatabase >> username >> "," >> taskName >> "," >> length >> "," >> time >> endl;
-    }else if(userInput == 4){
-      TQ.printList();
-    }else if(userInput == 5){
-      return 0;
-      //TQ.printProfiles();
-    }else if(userInput == 6){
-      cout << "Please enter name of task you wish to delete: " << endl;
-      getline(cin, deleteTaskName);
-      if(TQ.peek().taskname == deleteTaskName){
-        TQ.completeTopTask();
-      }else{
-        TQ.completeAnyTask(deleteTaskName);
+    while(userInput != 7){
+      cout << endl;
+      menu();
+      cout << "Select an option: ";
+      cin >> userInput;
+      if(userInput == 1){
+        cout << "Please enter a username: " << endl;
+        cin >> username;
+        TQ.addProfile(username);
+      }else if(userInput == 2){
+        TQ.printProfiles();
+        cout << "Choose a profile" << endl;
+        cin >> username;
+      }else if(userInput == 3){
+        cout << "Please enter the category it is for:" << endl;
+        cin >> catname;
+        cout << "Please enter name of task: " << endl;
+        cin >> taskName;
+        cout << "Please enter number of hours to complete task: " << endl;
+        cin >> length;
+        cout << "Please enter number of days until task is due: " << endl;
+        cin >> time;
+        TQ.addTask(taskName, length, time);
+        output = username + "," + catname + "," + taskName + "," + to_string(length) + "," + to_string(time) + "\n";
+        outdatabase << output;
+      }else if(userInput == 4){
+        TQ.printList();
+      }else if(userInput == 5){
+        return 0;
+        //TQ.printProfiles();
+      }else if(userInput == 6){
+        cout << "Please enter name of task you wish to delete: " << endl;
+        TQ.printList();
+        cin >> deleteTaskName;
+        if(TQ.peek().taskname == deleteTaskName){
+          TQ.completeTopTask();
+        }else{
+          TQ.completeAnyTask(deleteTaskName);
+        }
       }
+        outdatabase.close();
     }
   }
-    outdatabase.close();
-  }
+
 
   cout << "Procrastination is the Death of Freedom!" << endl;
   return 0;
