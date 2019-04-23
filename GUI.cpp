@@ -17,7 +17,7 @@
 
 const char g_szClassName[] = "myWindowClass";
 
-HWND hName, hLength, hTime, hCat, hProfile, hTask;
+HWND hName, hLength, hTime, hCat, hProfile, hTask, hCatWeight;
 HMENU hMenu;
 // HMENU hEdit;
 ////////////////////////////////////////////////////////////////////////////////
@@ -52,7 +52,8 @@ void AddControls(HWND hWnd){
   hName = CreateWindowW(L"EDIT", L"'ENTER TASK NAME'", WS_VISIBLE | WS_CHILD | WS_BORDER | ES_MULTILINE | ES_AUTOVSCROLL, 190, 130, 150, 50, hWnd, NULL, NULL, NULL);
   hLength = CreateWindowW(L"EDIT", L"'ENTER TASK LENGTH'", WS_VISIBLE | WS_CHILD | WS_BORDER | ES_MULTILINE | ES_AUTOVSCROLL, 355, 130, 150, 50, hWnd, NULL, NULL, NULL);
   hTime = CreateWindowW(L"EDIT", L"'ENTER TASK TIME'", WS_VISIBLE | WS_CHILD | WS_BORDER | ES_MULTILINE | ES_AUTOVSCROLL, 520, 130, 150, 50, hWnd, NULL, NULL, NULL);
-  hCat = CreateWindowW(L"EDIT", L"'ENTER TASK CATEGORY'", WS_VISIBLE | WS_CHILD | WS_BORDER | ES_MULTILINE | ES_AUTOVSCROLL, 685, 130, 150, 50, hWnd, NULL, NULL, NULL);
+  hCat = CreateWindowW(L"EDIT", L"'ENTER TASK CATEGORY NAME'", WS_VISIBLE | WS_CHILD | WS_BORDER | ES_MULTILINE | ES_AUTOVSCROLL, 685, 130, 150, 50, hWnd, NULL, NULL, NULL);
+  hCatWeight = CreateWindowW(L"EDIT", L"'ENTER CATEGORY WEIGHT'", WS_VISIBLE | WS_CHILD | WS_BORDER | ES_MULTILINE | ES_AUTOVSCROLL, 850, 130, 150, 50, hWnd, NULL, NULL, NULL);
 
 
   CreateWindowW(L"Button", L"Display Current Tasks", WS_VISIBLE | WS_CHILD | WS_BORDER, 25, 195, 150, 50, hWnd, (HMENU)DISPLAY_TASKS, NULL, NULL);
@@ -88,12 +89,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
                 addProfile(profile);
                 break;
               case ADD_TASK:
-                char name[30], length[10], time[10], category[50];
+                char name[30], length[10], time[10], weight[10], category[50];
                 GetWindowText(hName, name, 30);
                 GetWindowText(hLength, length, 10);
                 GetWindowText(hTime, time, 10);
                 GetWindowText(hCat, category, 50);
-                addTask(name, length, (int)time, category);
+                GetWindowText(hCatWeight, weight, 10);
+                addTask(name, length, (int)time, category, weight);
                 break;
               case DISPLAY_TASKS:
                 printList();
