@@ -37,7 +37,7 @@ public:
   void printList();
   void printProfiles();
   int search(string TaskName);
-  double calculatePriority(float length, int time); // (1/time til deadline) * (duration) * (importance)
+  double calculatePriority(float length, int time, int catweight); // (1/time til deadline) * (duration) * (importance)
 private:
   void repairUpward(int nodeIndex);
 
