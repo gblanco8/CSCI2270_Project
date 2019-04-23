@@ -50,7 +50,7 @@ void ToDoList::addProfile(string username){ //creates a new profile for the user
 /////
 void ToDoList::addTask(string taskName, float length, int time, int catWeight){
   Task nT;
-  float priority = 0;
+  double priority = 0;
   TaskPriority[currentQueueSize+1] = nT;
 //Add fields the the new task
   nT.taskname = taskName;
@@ -106,11 +106,12 @@ bool ToDoList::isEmpty(){
 }
 /////
 void ToDoList::printList(){
+  repairUpward(currentQueueSize-1);
   ofstream outdata("Database.txt");
   if(outdata.is_open()){
     string output;
     for(int i=0; i<currentQueueSize; i++){
-      output = to_string(i+1) + ". " + TaskPriority[i].taskname + "\n";
+      output = to_string(i+1) + ". " + TaskPriority[i].taskname + " - " + to_string(TaskPriority[i].priority) + "\n";
       outdata << output;
     }
   }
@@ -130,7 +131,7 @@ double ToDoList::calculatePriority(float length, int time, int catweight){
     cout << "Sorry, you do not have enough time to complete this task" << endl;
     return -1;
   }else{
-    priority = (length/time)*catweight;
+    priority = ((length/time)*catweight);
     return priority;
   }
 }
