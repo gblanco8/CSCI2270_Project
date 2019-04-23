@@ -7,6 +7,7 @@ using namespace std;
 ToDoList::ToDoList(){
   TaskPriority = new Task[maxQueueSize];
   currentQueueSize = 0;
+  numProfs = 0;
 }
 /////
 ToDoList::~ToDoList(){
@@ -17,6 +18,8 @@ void ToDoList::addProfile(string username) //creates a new profile for the user
 {
   Profile* userProfile = new Profile;
   userProfile->username = username;
+  profs.push_back(*userProfile);
+  numProfs++;
 
   string catName;
   int importance;
