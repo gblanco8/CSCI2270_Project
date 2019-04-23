@@ -80,6 +80,7 @@ int main(int argc, char const* argv[]){
         output = username + "," + catname + "," + taskName + "," + to_string(length) + "," + to_string(time) + "\n";
         outdatabase << output;
       }else if(userInput == 4){
+        cout << "These are the current stored profiles:" << endl;
         TQ.printList();
       }else if(userInput == 5){
         return 0;
