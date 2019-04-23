@@ -26,7 +26,7 @@ void menu(){
 /////////////////////Main//////////////////////////
 int main(int argc, char const* argv[]){
   ToDoList TQ;
-  
+
   ifstream indatabase("Database.txt");
   string line;
   string data[5];
@@ -34,14 +34,14 @@ int main(int argc, char const* argv[]){
     while(getline(indatabase,line)){
       stringstream ss << line;
       while(getline(ss,data[i],",")){
-       i++; 
+       i++;
       }
       TQ.addProfile(data[0]);
       TQ.addTask(data[1],stof(data[2]),stoi(data[3]));
     }
   }
   indatabase.close();
-  
+
 //Input Variables
   int userInput;
   string username;
@@ -52,7 +52,7 @@ int main(int argc, char const* argv[]){
 
   ofstream outdatabase("Database.txt");
   if(outdatabase.is_open()){
-    
+
   while(userInput != 7){
     cout << endl;
     menu();
@@ -65,6 +65,8 @@ int main(int argc, char const* argv[]){
       TQ.addProfile(username);
     }else if(userInput == 2){
       QT.printProfiles();
+      cout << "Choose a profile" << endl;
+      cin << username;
     }else if(userInput == 3){
       cout << "Please enter name of task: " << endl;
       cin >> taskName;
@@ -73,6 +75,7 @@ int main(int argc, char const* argv[]){
       cout << "Please enter number of days until task is due: " << endl;
       cin >> time;
       TQ.addTask(taskName, length, time);
+      outdatabase >> username >> "," >> taskName >> "," >> length >> "," >> time >> endl;
     }else if(userInput == 4){
       TQ.printList();
     }else if(userInput == 5){
@@ -90,7 +93,7 @@ int main(int argc, char const* argv[]){
   }
     outdatabase.close();
   }
-  
+
   cout << "Procrastination is the Death of Freedom!" << endl;
   return 0;
 }
