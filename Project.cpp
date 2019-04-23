@@ -105,8 +105,13 @@ bool ToDoList::isEmpty(){
 }
 /////
 void ToDoList::printList(){
-  for(int i=0; i<currentQueueSize; i++){
-    cout << i+1 << ". " << TaskPriority[i].taskname << endl;
+  ofstream outdata("Database.txt");
+  if(outdata.is_open()){
+    string output;
+    for(int i=0; i<currentQueueSize; i++){
+      output = to_string(i+1) + ". " + TaskPriority[i].taskname + "\n";
+      outdata << output;
+    }
   }
 }
 /////
@@ -147,5 +152,11 @@ void ToDoList::repairUpward(int nodeIndex){
 
 void ToDoList::printProfiles()
 {
-  
+  ofstream outprof("Profiles.txt");
+  if(outprof.is_open()){
+    for(int i = 0; i < numProfs; i++){
+      string output = profs[i].username + "\n";
+      outprof << output;
+    }
+  }
 }
